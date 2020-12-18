@@ -141,6 +141,7 @@ class TablesIgniter{
      */
     private function extraConfig($bui){
         if(!empty($_POST["search"]["value"])){  
+            $bui->groupStart();
             foreach ($this->searchLike as  $key => $field) {
                 if($key == 0){
                     $bui->like($field,$_POST["search"]["value"]);
@@ -148,6 +149,7 @@ class TablesIgniter{
                     $bui->orLike($field,$_POST["search"]["value"]);
                 }
             }
+            $bui->groupEnd();
         }
         if(isset($_POST["order"])){
             if(!empty($this->order)){
